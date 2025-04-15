@@ -1,0 +1,106 @@
+{
+	"info": {
+		"_postman_id": "4b72cfb6-fa32-4a8b-b62f-cabc2f8d0b2a",
+		"name": "ABC Lighting Customer Support Bot",
+		"description": "StartFragmentCustomer service simulation using ChatGPTEndFragment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43972773",
+		"_collection_link": "https://seshu-4762786.postman.co/workspace/Seshu's-Workspace~c7c44565-0798-4266-8e43-896b1cc573df/collection/43972773-4b72cfb6-fa32-4a8b-b62f-cabc2f8d0b2a?action=share&source=collection_link&creator=43972773"
+	},
+	"item": [
+		{
+			"name": "ABC Customer Support",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let requestBody = pm.request.body ? (pm.request.body.raw ? JSON.parse(pm.request.body.raw) : null) : null;\r",
+							"let userMessage = requestBody && requestBody.messages && requestBody.messages[1] ? requestBody.messages[1].content.toLowerCase() : \"\";\r",
+							"let responseText = \"\";\r",
+							"\r",
+							"if (userMessage.includes(\"solarsmart path lights\") && userMessage.includes(\"image\")) {\r",
+							"  responseText = \"Certainly! Here is the image: https://ibb.co/BKLqqh5s.\";\r",
+							"} else if (userMessage.includes(\"solarbright pro street lights\") && userMessage.includes(\"image\")) {\r",
+							"  responseText = \"Certainly! Here is the image: https://ibb.co/39msQ3X9L.\";\r",
+							"} else if (userMessage.includes(\"ecoglow garden lights\") && userMessage.includes(\"image\")) {\r",
+							"  responseText = \"Certainly! Here is the image: https://ibb.co/Pzmz3hJq.\";\r",
+							"} else if (userMessage.includes(\"solarbright pro street lights\")) {\r",
+							"  responseText = \"Of course! The SolarBright Pro Street Lights feature high-efficiency solar panels and automatic dusk-to-dawn lighting, with a 3-year warranty. Would you like to see an image?\";\r",
+							"} else if (userMessage.includes(\"ecoglow garden lights\")) {\r",
+							"  responseText = \"Gladly! The EcoGlow Garden Lights are compact, energy-saving garden lights with motion sensors, and they come with a 2-year warranty. Would you like to see an image?\";\r",
+							"} else if (userMessage.includes(\"no\")) {\r",
+							"  responseText = \"Thank you for contacting us! Please provide your contact info (e.g., email or phone number) so we can assist you further.\";\r",
+							"} else if (userMessage.includes(\"business hours\")) {\r",
+							"  responseText = \"Our business hours are Monday–Friday, 9 AM–6 PM; Saturday, 10 AM–4 PM; Closed Sundays.\";\r",
+							"} else if (userMessage.includes(\"locations\") || userMessage.includes(\"stores\")) {\r",
+							"  responseText = \"We have two stores located at 123 Solar Lane, Sunnyville, and 456 Light Road, Brighttown.\";\r",
+							"} else {\r",
+							"  responseText = \"I'm sorry, I can only assist with SolarBright Pro Street Lights, EcoGlow Garden Lights, or SolarSmart Path Lights. Please ask about one of these products or request an image.\";\r",
+							"}\r",
+							"\r",
+							"if (!userMessage.includes(\"no\")) {\r",
+							"  responseText += \" Is there anything else I can help you with?\";\r",
+							"}\r",
+							"\r",
+							"pm.environment.set(\"response\", responseText);\r",
+							"\r",
+							"pm.test(\"Display Responses\", function () {\r",
+							"  console.log(\"Script Response: \" + responseText);\r",
+							"  if (pm.response.code === 200) {\r",
+							"    console.log(\"API Response: \" + pm.response.json().choices[0].message.content);\r",
+							"  }\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "HTTP-Referer",
+						"value": "https://your-website.com",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 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",
+						"type": "text"
+					},
+					{
+						"key": "X-Title",
+						"value": "ABC-Lighting-Bot",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"model\": \"openai/gpt-3.5-turbo\",\r\n  \"messages\": [\r\n    {\r\n      \"role\": \"system\",\r\n      \"content\": \"You are a helpful customer service representative for ABC Lighting Company. We have two stores located at 123 Solar Lane, Sunnyville, and 456 Light Road, Brighttown. Business hours are Monday–Friday, 9 AM–6 PM; Saturday, 10 AM–4 PM; Closed Sundays. You must respond only using the following fabricated company data:\\n\\nABC Lighting offers 3 products:\\n1. SolarBright Pro Street Lights — High-efficiency solar panels, automatic dusk-to-dawn lighting, 3-year warranty. Image: https://ibb.co/39msQ3X9L\\n2. EcoGlow Garden Lights — Compact, energy-saving garden lights with motion sensors, 2-year warranty. Image: https://ibb.co/Pzmz3hJq\\n3. SolarSmart Path Lights — Smart connectivity, app-controlled brightness, 5-year warranty. Image: https://ibb.co/BKLqqh5s\\n\\nWhen providing an image, state 'Here is the image: [URL]' without additional markdown linking. After each response (except when the user says 'no'), end exactly with 'Is there anything else I can help you with?'. If the user says 'no', you must respond exactly with 'Thank you for contacting us! Please provide your contact info (e.g., email or phone number) so we can assist you further.' and do not add any follow-up question. You must always be polite and answer only about these three products, locations, or hours.\"\r\n    },\r\n    {\r\n      \"role\": \"user\",\r\n      \"content\": \"Can you send me an image of SolarSmart Path Lights?\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://openrouter.ai/api/v1/chat/completions",
+					"protocol": "https",
+					"host": [
+						"openrouter",
+						"ai"
+					],
+					"path": [
+						"api",
+						"v1",
+						"chat",
+						"completions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

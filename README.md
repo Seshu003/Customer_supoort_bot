@@ -106,19 +106,6 @@ To test the bot, modify the `content` field in the `messages[1]` object of the r
 - To test a different case, edit the `content` in the body (e.g., change `"no"` to `"What are your business hours?"`) and click **Send**.
 - Alternatively, duplicate the "ABC Customer Support" request (right-click > Duplicate), rename it (e.g., "Hours Test"), and update the body’s `content` for each test case.
 
-## Screenshots
-- **No Response**: ![No Response](./screenshots/no_response.png)
-- **Image Response**: ![Image Response](./screenshots/image_response.png)
-- **Location Response**: ![Location Response](./screenshots/location_response.png)
-- **Console Logs**: ![Console Logs](./screenshots/console_logs.png)
-
-[Note: Replace the `./screenshots/` paths with actual image file names and upload the screenshots to a `screenshots` folder in your GitHub repository.]
-
-## Known Limitations and Notes
-- **API Dependency**: The bot requires a valid OpenRouter.ai API key in the `Authorization` header. Without it, use `https://invalid-endpoint.com` to test the script’s response, though the "Response" tab may show an error.
-- **Image Sources**: The Imgur URLs are based on photos edited from solar light datasheets, ensuring compliance with the assignment.
-- **Single Request**: The collection contains one request; multiple test cases require manual input changes or additional requests.
-
 ## Contact Information
 - **Name**: A.Sai Seshu
 - **Email**: seshu.y2k23@gmail.com

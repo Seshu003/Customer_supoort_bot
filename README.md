@@ -105,6 +105,12 @@ To test the bot, modify the `content` field in the `messages[1]` object of the r
 ### Modifying Test Cases
 - To test a different case, edit the `content` in the body (e.g., change `"no"` to `"What are your business hours?"`) and click **Send**.
 - Alternatively, duplicate the "ABC Customer Support" request (right-click > Duplicate), rename it (e.g., "Hours Test"), and update the body’s `content` for each test case.
+  
+## Screenshots
+- **No Response**: ![No Response](./Screenshots/no_response.png)
+- **Image Response**: ![Image Response](./Screenshots/image_response.png)
+- **Location Response**: ![Location Response](./Screenshots/location_response.png)
+- **Hours Respponse**: ![Console Logs](./Screenshots/business_hours_response.png)
 
 ## Contact Information
 - **Name**: A.Sai Seshu
